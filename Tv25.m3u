@@ -488,7 +488,7 @@ https://cdn.cvattv.com.ar/live/c7eds/MTV00/SA_Live_dash_enc/MTV00.mpd
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=daecef5fe32f4ce083c6a0c692755d6a:d4227f24389a9ba77293214b93eb0d7d
 https://cdn.cvattv.com.ar/live/c6eds/HTV/SA_Live_dash_enc/HTV.mpd
-#EXTINF:-1 tvg-logo=" https://i.postimg.cc/J7vLp05J/TELEHIT.jpg" ,TELEHIT
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/J7vLp05J/TELEHIT.jpg" ,TELEHIT
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=930f2b33864637faf2b2dab6c8d0ba92:530e6561cc4197e9eab7bf7b6f35a3ed
 http://cdn.sensa.com.ar/live/eds/Telehit/live_dash_cld/Telehit.mpd
