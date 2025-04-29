@@ -292,7 +292,7 @@ http://cdn.sensa.com.ar/live/eds/GoldenEdge/live_dash_cld/GoldenEdge.mpd
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=eae51b1d67ff47adac7b6bd3a4b1120a:b4d6bb47193f33ffc12379cdc447455d
 https://cdn.cvattv.com.ar/live/c6eds/Lifetime/SA_Live_dash_enc/Lifetime.mpd
-#EXTINF:-1 tvg-logo="      " ,UNIVERSAL TV
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/hvtQSQLG/UNIVERSAL.jpg" ,UNIVERSAL TV
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=6cf9a13d6fd65a0f2e1cee3969aab9f5:ea61c3c1adee71b5c2e9744e41d4b75f
 https://cdn.cvattv.com.ar/live/c6eds/Universal_Channel_HD/SA_Live_dash_enc/Universal_Channel_HD.mpd
@@ -316,7 +316,7 @@ http://cdn.sensa.com.ar/live/eds/KanalD/live_dash_cld/KanalD.mpd
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=d41cf825e878f0d8e276218af7f5b7e1:13d1b73ab578ab8623be9347bcf8972a
 https://cdn.cvattv.com.ar/live/c7eds/Pasiones/SA_Live_dash_enc/Pasiones.mpd
-#EXTINF:-1 tvg-logo="https://i.postimg.cc/7PKTKX4J/TLN.jpg" ,TL NOVELAS
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/7PKTKX4J/TLN.jpg",TL NOVELAS
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=60cb38a05880cd0eb429f71398609540:c251aac7943c0d1324aa9a4129f3afd4
 https://cdn.cvattv.com.ar/live/c6eds/Telenovelas/SA_Live_dash_enc/Telenovelas.mpd
@@ -324,39 +324,39 @@ https://cdn.cvattv.com.ar/live/c6eds/Telenovelas/SA_Live_dash_enc/Telenovelas.mp
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=b37d85be9d2b4b619f945beff713fda3:917309c98f072b0bd484dd6560c6d166
 https://cdn.cvattv.com.ar/live/c6eds/Canal_de_las_estrellas/SA_Live_dash_enc/Canal_de_las_estrellas.mpd
-#EXTINF:-1 tvg-logo="https://i.postimg.cc/d3NkDQ6j/TELEMUNDO.jpg" ,TELEMUNDO
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/d3NkDQ6j/TELEMUNDO.jpg",TELEMUNDO
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=53d752e4649dadd808d913985f86ee77:d1fd24db1b61d634cabfc44538ce9b0e
 https://cdn.cvattv.com.ar/live/c7eds//Telemundo_HD/SA_Live_dash_enc/Telemundo_HD.mpd
-#EXTINF:-1 tvg-logo="https://i.postimg.cc/cCh7hNmv/COMEDY-CENTRAL.jpg" ,COMEDY CENTRAL
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/cCh7hNmv/COMEDY-CENTRAL.jpg", CENTRAL DE LA COMEDÍA
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=4013f784c5ef4318ad47024e61eb094e:bad433a547f97c7f65cda5e83b8dd416
 https://cdn.cvattv.com.ar/live/c7eds/ComedyCentral/SA_Live_dash_enc/ComedyCentral.mpd
-#EXTINF:-1 tvg-logo="https://i.postimg.cc/PrxZh6gY/A3CINE.jpg" ,A3CINE
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/PrxZh6gY/A3CINE.jpg",A3CINE
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=d6ff881a6f07986a80d6ad6f041b57d4:b401c87c2ab11a1a488ee1c474b109ae
 https://cdn.cvattv.com.ar/live/c7eds/A3_Cine/SA_Live_dash_enc/A3_Cine.mpd
-#EXTINF:-1 tvg-logo="https://i.postimg.cc/ncZ2QP5H/D-PELICULA.jpg" ,DE PELICULA
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/ncZ2QP5H/D-PELICULA.jpg",DE PELICULA
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=639e9249b63b731e7621953d27aa5393:ce09cb3f4bcad5c1febe10893b6ba491
 http://cdn.sensa.com.ar/live/eds/DePelicula/live_dash_cld/DePelicula.mpd
-#EXTINF:-1 tvg-logo="https://i.postimg.cc/TY4bPVxS/CINE-PREMIUN.jpg" ,CINE PREMIUN
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/TY4bPVxS/CINE-PREMIUN.jpg",CINE PREMIUN
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=812f89cb0024d3699e832d72e4f0ebb6:851d7496cd1a7e03125b2b6d3b41c922
 http://cdn.sensa.com.ar/live/sta01/CinePremium/live_dash_cld/CinePremium.mpd
-#EXTINF:-1 tvg-logo="https://i.postimg.cc/vHm5ykhv/UNIVERSAL-CINEMA.jpg" ,UNIVERSAL CINEMA
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/vHm5ykhv/UNIVERSAL-CINEMA.jpg", INEMA UNIVERSAL
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=f6ae2e17173055e4ca69dc18963406ae:5a955c29eb88a0b4c9a2538cc4b3aea2
 https://cdn.cvattv.com.ar/live/c6eds/Universal_Cinema/SA_Live_dash_cenc/Universal_Cinema.mpd
-#EXTINF:-1 tvg-logo="https://i.postimg.cc/x1JHJmWJ/UNIVERSAL-COMEDY.jpg" ,UNIVERSAL COMEDY
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/x1JHJmWJ/UNIVERSAL-COMEDY.jpg", COMMEDIA UNIVERSAL
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=062c5d25105a3a935b67e36923c73f28:88c2d4cec420f18d2477152c66c7870d
 https://cdn.cvattv.com.ar/live/c6eds/Universal_Comedy/SA_Live_dash_enc/Universal_Comedy.mpd
-#EXTINF:-1 tvg-logo="https://i.postimg.cc/4dHfB9qK/UNIVERSAL-CRIME.jpg" ,UNIVERSAL CRIME
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/4dHfB9qK/UNIVERSAL-CRIME.jpg", CRIME UNIVERSAL
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=1efd7edf60e1514f775dd13d046ae708:c2ef1abbd945c62c11b1375eaaa50f0d
 https://cdn.cvattv.com.ar/live/c6eds/universal_Crime/SA_Live_dash_enc/universal_Crime.mpd
-#EXTINF:-1 tvg-logo="https://i.postimg.cc/5NkL2gkW/UNIVERSAL-PREMIERE.jpg" ,UNIVERSAL PREMIERE
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/5NkL2gkW/UNIVERSAL-PREMIERE.jpg",PREMIERE UNIVERSAL
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=0eb20b51ad13b58ad417f11318e588b3:ad5d29a33d73d21187157802de8e6097
 https://cdn.cvattv.com.ar/live/c6eds/Universal_Premiere/SA_Live_dash_enc/Universal_Premiere.mpd
@@ -498,7 +498,7 @@ http://cdn.sensa.com.ar/live/eds/Telehit/live_dash_cld/Telehit.mpd
 https://cdn.cvattv.com.ar/live/c6eds/Quiero_HD/SA_Live_dash_enc/Quiero_HD.mpd
 #EXTINF:-1 tvg-logo="https://i.postimg.cc/1RWC6Tbz/BETHEL.jpg" ,BETHEL TV
 http://148.222.228.3:9000/play/a08o/index.m3u8
-#EXTINF:-1 tvg-logo="" ,CANAL LUZ
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/nhLCkW1M/CANAL-LUZ.jpg" ,CANAL LUZ
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=f7523ea5a2da78c465d928be1d81e2a5:870ad69e98abd52b443bd8f0204b3bc4
 https://cdn.cvattv.com.ar/live/c7eds/CANAL_LUZ/SA_Live_dash_enc/CANAL_LUZ.mpd
