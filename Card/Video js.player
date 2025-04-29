@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <!-- optimize mobile versions -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Reproductor HTML5</title>
+
+    <link href="https://vjs.zencdn.net/7.7.6/video-js.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://aws.desdeparaguay.net/css/videojs.ads.css" />
+    <link rel="stylesheet" href="https://aws.desdeparaguay.net/css/videojs.ima.css" />
+    <link href="https://unpkg.com/@silvermine/videojs-quality-selector/dist/css/quality-selector.css" rel="stylesheet">
+
+    <script src="https://vjs.zencdn.net/7.7.6/video.js"></script>
+    <script src="https://vjs.zencdn.net/7.7.6/lang/es.js"></script>
+    <script src="https://unpkg.com/@silvermine/videojs-quality-selector/dist/js/silvermine-videojs-quality-selector.min.js"></script>
+
+    <script src="https://imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
+    <script src="https://aws.desdeparaguay.net/js/videojs.ads.js"></script>
+    <script src="https://aws.desdeparaguay.net/js/videojs.ima.js"></script>
+
+
+
+</head>
+<body style="margin: 0">
+
+        <div id="container">
+            <video-js id="my_video_1" class="vjs-default-skin vjs-16-9 vjs-big-play-centered vjs-fill" poster='https://img.freepik.com/premium-vector/tv-no-signal-background-illustration-no-signal-television-screen-graphic-broadcast-design_41737-775.jpg' controls preload="false" autoplay muted></video-js>
+        </div>
+        <script>
+
+
+
+        var preRollVal = 'https:%2F%2Fpubads.g.doubleclick.net%2Fgampad%2Fads?iu=%2F22074495497%2FLatele_PreRoll&description_url=https%3A%2F%2Flatele.com.py&tfcd=0&npa=0&sz=640x360&gdfp_req=1&output=vast&unviewed_position_start=1&env=vp&impl=s&correlator=';
+
+        if (preRollVal != null) {
+            preRollVal = preRollVal.replace(/%2F/g, "/");
+        }
+
+        var player = videojs('my_video_1', {
+            language: 'es'
+        });
+
+        player.src([
+            {
+                src: 'https://y2fzdgxl.fubohd.com/espn/mono.m3u8?token=24b8d385fc0875b7cf60ec7033463b227e9aab2f-d9-1745816175-1745798175',
+                type: 'application/x-mpegURL',
+                label: '1080P',
+            },
+            {
+                src: 'https://y2fzdgxl.fubohd.com/espn/mono.m3u8?token=24b8d385fc0875b7cf60ec7033463b227e9aab2f-d9-1745816175-1745798175',
+                type: 'application/x-mpegURL',
+                label: '720P',
+            },
+            {
+                src: 'https://y2fzdgxl.fubohd.com/espn/mono.m3u8?token=24b8d385fc0875b7cf60ec7033463b227e9aab2f-d9-1745816175-1745798175',
+                type: 'application/x-mpegURL',
+                label: '360P',
+                selected: true,
+            },
+        ]);
+
+        var options = {
+            id: 'my_video_1',
+            locale: 'es_py',
+            disableFlashAds: 'true',
+            adTagUrl: preRollVal.trim()
+        };
+
+        player.controlBar.addChild('QualitySelector');
+        player.ima(options);
+
+        // Remove controls from the player on iPad to stop native controls from stealing
+        // our click
+        var contentPlayer = document.getElementById('content_video_html5_api');
+        if ((navigator.userAgent.match(/iPad/i) ||
+            navigator.userAgent.match(/Android/i)) &&
+            contentPlayer.hasAttribute('controls')) {
+            contentPlayer.removeAttribute('controls');
+        }
+
+        // Initialize the ad container when the video player is clicked, but only the
+        // first time it's clicked.
+        var initAdDisplayContainer = function () {
+            player.ima.initializeAdDisplayContainer();
+            wrapperDiv.removeEventListener(startEvent, initAdDisplayContainer);
+        }
+
+        var startEvent = 'click';
+        if (navigator.userAgent.match(/iPhone/i) ||
+            navigator.userAgent.match(/iPad/i) ||
+            navigator.userAgent.match(/Android/i)) {
+            startEvent = 'touchend';
+        }
+
+        var wrapperDiv = document.getElementById('my_video_1');
+            wrapperDiv.addEventListener(startEvent, initAdDisplayContainer);
+
+
+        </script>
+
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-TXXSDJDHQX"></script>
+        <script>window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+
+            gtag('config', 'G-TXXSDJDHQX');</script>
+
+
+
+</body>
+</html>
