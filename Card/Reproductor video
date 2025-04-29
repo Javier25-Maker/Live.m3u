@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reproductor de Video</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .player-container {
+            position: relative;
+            width: 90%;
+            max-width: 1000px;
+            margin: 20px auto;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        #videoPlayer {
+            width: 100%;
+            height: auto;
+            background-color: #000;
+        }
+        
+        /* Modo forzado horizontal */
+        .force-landscape {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 9999;
+            background-color: #000;
+            display: none;
+        }
+        
+        .force-landscape video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(90deg);
+            width: 100vh;
+            height: 100vw;
+            object-fit: contain;
+        }
+        
+        /* Mensaje de orientación */
+        #orientation-message {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        #orientation-message svg {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+            animation: rotate 2s infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            50% { transform: rotate(-90deg); }
+            100% { transform: rotate(0deg); }
+        }
+        
+        #orientation-message h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        #orientation-message p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .action-btn {
+            background-color: #e50914;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 5px;
+        }
+        
+        .action-btn:hover {
+            background-color: #f40612;
+        }
+        
+        /* Botones de acción */
+        .video-controls {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+        
+        /* Estilos para pantalla completa */
+        #videoPlayer:fullscreen {
+            width: 100vw;
+            height: 100vh;
+        }
+        
+        #videoPlayer:-webkit-full-screen {
+            width: 100vw;
+            height: 100vh;
+        }
+        
+        #videoPlayer:-moz-full-screen {
+            width: 100vw;
+            height: 100vh;
+        }
+        
+        /* Loader */
+        .loader {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #e50914;
+            animation: spin 1s ease-in-out infinite;
+            display: none;
+        }
+        
+        @keyframes spin {
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Contenedor principal del reproductor -->
+    <div class="player-container">
+        <video id="videoPlayer" controls controlsList="nodownload"></video>
+        <div class="loader"></div>
+    </div>
+    
+    <!-- Contenedor para forzar orientación horizontal cuando la rotación está bloqueada -->
+    <div class="force-landscape" id="forceLandscape">
+        <video id="videoPlayerRotated"></video>
+    </div>
+    
+    <!-- Mensaje de orientación -->
+    <div id="orientation-message">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
+            <line x1="12" y1="18" x2="12" y2="18.01"></line>
+        </svg>
+        <h2>¡Ver en horizontal!</h2>
+        <p>Este video solo puede verse en orientación horizontal</p>
+        <div>
+            <button class="action-btn" id="forceHorizontalBtn">Ver Ahora</button>
+        </div>
+    </div>
+    
+    <script>
+        (function() {
+            // URL del video
+            const url = "http://200.55.244.75:8000/play/a01r/index.m3u8";
+            
+            // Referencias a elementos
+            const video = document.getElementById('videoPlayer');
+            const videoRotated = document.getElementById('videoPlayerRotated');
+            const orientationMessage = document.getElementById('orientation-message');
+            const forceHorizontalBtn = document.getElementById('forceHorizontalBtn');
+            const forceLandscape = document.getElementById('forceLandscape');
+            const loader = document.querySelector('.loader');
+            
+            // Variables de estado
+            let isRotationLocked = false;
+            let inForcedLandscapeMode = false;
+            
+            // Configurar fuentes de video
+            video.src = url;
+            videoRotated.src = url;
+            
+            // Sincronizar videos
+            videoRotated.addEventListener('timeupdate', function() {
+                if (Math.abs(video.currentTime - videoRotated.currentTime) > 0.5) {
+                    video.currentTime = videoRotated.currentTime;
+                }
+            });
+            
+            video.addEventListener('timeupdate', function() {
+                if (Math.abs(video.currentTime - videoRotated.currentTime) > 0.5) {
+                    videoRotated.currentTime = video.currentTime;
+                }
+            });
+            
+            // Detectar si la rotación está bloqueada
+            function checkRotationLock() {
+                // Verificar si hay cambio al girar el dispositivo
+                const initialOrientation = window.innerWidth > window.innerHeight ? 'landscape' : 'portrait';
+                
+                // Intentar bloquear a landscape
+                if (screen.orientation && screen.orientation.lock) {
+                    screen.orientation.lock('landscape')
+                        .then(() => {
+                            // Si tiene éxito, la rotación no está bloqueada
+                            isRotationLocked = false;
+                            screen.orientation.unlock();
+                        })
+                        .catch(() => {
+                            // Si falla, probablemente la rotación está bloqueada
+                            isRotationLocked = true;
+                        });
+                }
+                
+                // Verificación adicional basada en eventos de orientación
+                let orientationChanged = false;
+                
+                const checkOrientationChange = () => {
+                    const currentOrientation = window.innerWidth > window.innerHeight ? 'landscape' : 'portrait';
+                    if (currentOrientation !== initialOrientation) {
+                        orientationChanged = true;
+                    }
+                };
+                
+                window.addEventListener('resize', checkOrientationChange, { once: true });
+                
+                // Si después de un tiempo no ha habido cambio al intentar rotar, asumimos bloqueo
+                setTimeout(() => {
+                    if (!orientationChanged) {
+                        isRotationLocked = true;
+                    }
+                    window.removeEventListener('resize', checkOrientationChange);
+                }, 1000);
+            }
+            
+            // Verificar orientación
+            function checkOrientation() {
+                // Solo mostrar en dispositivos móviles
+                if (window.innerWidth < 768) {
+                    if (window.innerWidth > window.innerHeight) {
+                        // Orientación horizontal, ocultar mensaje
+                        orientationMessage.style.display = "none";
+                        
+                        // Si estamos en modo forzado, salir de él
+                        if (inForcedLandscapeMode) {
+                            exitForcedLandscapeMode();
+                        }
+                    } else {
+                        // Orientación vertical, mostrar mensaje
+                        if (!inForcedLandscapeMode) {
+                            orientationMessage.style.display = "flex";
+                            video.pause();
+                        }
+                    }
+                }
+            }
+            
+            // Función para entrar en modo forzado horizontal
+            function enterForcedLandscapeMode() {
+                inForcedLandscapeMode = true;
+                orientationMessage.style.display = "none";
+                forceLandscape.style.display = "block";
+                
+                // Sincronizar tiempo con el video original
+                videoRotated.currentTime = video.currentTime;
+                
+                // Reproducir el video rotado
+                videoRotated.play().catch(err => console.log('Error al reproducir video rotado:', err));
+                
+                // Solicitar pantalla completa para el contenedor
+                if (forceLandscape.requestFullscreen) {
+                    forceLandscape.requestFullscreen().catch(err => console.log('Error pantalla completa:', err));
+                } else if (forceLandscape.webkitRequestFullscreen) {
+                    forceLandscape.webkitRequestFullscreen();
+                } else if (forceLandscape.mozRequestFullScreen) {
+                    forceLandscape.mozRequestFullScreen();
+                } else if (forceLandscape.msRequestFullscreen) {
+                    forceLandscape.msRequestFullscreen();
+                }
+                
+                // Ocultar el video original
+                video.style.display = "none";
+            }
+            
+            // Función para salir del modo forzado horizontal
+            function exitForcedLandscapeMode() {
+                inForcedLandscapeMode = false;
+                forceLandscape.style.display = "none";
+                video.style.display = "block";
+                
+                // Sincronizar tiempo del video original
+                video.currentTime = videoRotated.currentTime;
+                
+                // Pausar el video rotado
+                videoRotated.pause();
+            }
+            
+            // Función para forzar pantalla completa y orientación horizontal
+            function requestFullScreenAndLandscape() {
+                loader.style.display = "block";
+                
+                // Intentar método estándar primero
+                if (screen.orientation && screen.orientation.lock) {
+                    screen.orientation.lock('landscape')
+                        .then(() => {
+                            // Si tiene éxito, usar modo estándar
+                            if (video.requestFullscreen) {
+                                video.requestFullscreen().catch(err => fallbackToForcedMode());
+                            } else if (video.webkitRequestFullscreen) {
+                                video.webkitRequestFullscreen();
+                            } else if (video.mozRequestFullScreen) {
+                                video.mozRequestFullScreen();
+                            } else if (video.msRequestFullscreen) {
+                                video.msRequestFullscreen();
+                            }
+                            
+                            loader.style.display = "none";
+                            video.play().catch(err => console.log('Error al reproducir:', err));
+                        })
+                        .catch(() => {
+                            // Si falla, usar modo forzado
+                            fallbackToForcedMode();
+                        });
+                } else {
+                    fallbackToForcedMode();
+                }
+            }
+            
+            // Usar modo forzado si no funciona el estándar
+            function fallbackToForcedMode() {
+                isRotationLocked = true;
+                loader.style.display = "none";
+                enterForcedLandscapeMode();
+            }
+            
+            // Escuchar eventos
+            window.addEventListener('resize', checkOrientation);
+            window.addEventListener('orientationchange', checkOrientation);
+            
+            // Verificar orientación al cargar
+            checkOrientation();
+            checkRotationLock();
+            
+            // Eventos para reproducción - forzar horizontal siempre en móviles
+            video.addEventListener('play', function() {
+                if (window.innerWidth < 768) {
+                    if (window.innerHeight > window.innerWidth) {
+                        // Si está en vertical, pausar y mostrar mensaje
+                        video.pause();
+                        orientationMessage.style.display = "flex";
+                    } else {
+                        // Si ya está en horizontal, intenta pantalla completa
+                        if (video.requestFullscreen) {
+                            video.requestFullscreen().catch(err => console.log('Error pantalla completa:', err));
+                        } else if (video.webkitRequestFullscreen) {
+                            video.webkitRequestFullscreen();
+                        } else if (video.mozRequestFullScreen) {
+                            video.mozRequestFullScreen();
+                        } else if (video.msRequestFullscreen) {
+                            video.msRequestFullscreen();
+                        }
+                    }
+                }
+            });
+            
+            // Evento clic para botón de forzar horizontal
+            forceHorizontalBtn.addEventListener('click', function() {
+                requestFullScreenAndLandscape();
+            });
+            
+            // Detectar clic en el reproductor
+            video.addEventListener('click', function() {
+                if (window.innerWidth < 768 && window.innerHeight > window.innerWidth) {
+                    // Si está en móvil vertical, mostrar mensaje en vez de reproducir
+                    video.pause();
+                    orientationMessage.style.display = "flex";
+                }
+            });
+            
+            // Detectar si se usa el botón nativo de pantalla completa
+            video.addEventListener('fullscreenchange', function() {
+                if (document.fullscreenElement === video) {
+                    // Si es móvil y está en vertical, intentar rotar
+                    if (window.innerWidth < 768 && window.innerHeight > window.innerWidth) {
+                        if (screen.orientation && screen.orientation.lock) {
+                            screen.orientation.lock('landscape').catch(function() {
+                                // Si falla, verificar si debemos usar modo forzado
+                                if (isRotationLocked) {
+                                    enterForcedLandscapeMode();
+                                }
+                            });
+                        }
+                    }
+                }
+            });
+            
+            // Eventos para otros navegadores
+            video.addEventListener('webkitfullscreenchange', function() {
+                if (document.webkitFullscreenElement === video && window.innerHeight > window.innerWidth) {
+                    if (isRotationLocked) enterForcedLandscapeMode();
+                }
+            });
+            
+            video.addEventListener('mozfullscreenchange', function() {
+                if (document.mozFullScreenElement === video && window.innerHeight > window.innerWidth) {
+                    if (isRotationLocked) enterForcedLandscapeMode();
+                }
+            });
+            
+            video.addEventListener('MSFullscreenChange', function() {
+                if (document.msFullscreenElement === video && window.innerHeight > window.innerWidth) {
+                    if (isRotationLocked) enterForcedLandscapeMode();
+                }
+            });
+            
+            // Control personalizado para el video rotado
+            videoRotated.addEventListener('click', function() {
+                if (videoRotated.paused) {
+                    videoRotated.play();
+                } else {
+                    videoRotated.pause();
+                }
+            });
+            
+            // Manejar salida del modo forzado - volver a comprobar orientación
+            document.addEventListener('fullscreenchange', function() {
+                if (!document.fullscreenElement && inForcedLandscapeMode) {
+                    exitForcedLandscapeMode();
+                    // Comprobar orientación después de salir
+                    setTimeout(checkOrientation, 300);
+                }
+            });
+            
+            document.addEventListener('webkitfullscreenchange', function() {
+                if (!document.webkitFullscreenElement && inForcedLandscapeMode) {
+                    exitForcedLandscapeMode();
+                    setTimeout(checkOrientation, 300);
+                }
+            });
+            
+            // Prevenir reproducción en modo vertical
+            setInterval(function() {
+                if (window.innerWidth < 768 && window.innerHeight > window.innerWidth && !inForcedLandscapeMode) {
+                    if (!video.paused) {
+                        video.pause();
+                        orientationMessage.style.display = "flex";
+                    }
+                }
+            }, 1000);
+        })();
+    </script>
+</body>
+</html>
