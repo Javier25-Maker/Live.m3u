@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproductor de Video</title>
+	<meta name="robots" content="noindex, nofollow">
+            <link rel="stylesheet" href="https://cdn.plyr.io/3.6.8/plyr.css" />
+                    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+            </head>
+<body>
+
+    <video id="livePlayer" class="video-frame plyr" controls autoplay></video>
+
+    <script src="https://cdn.plyr.io/3.6.8/plyr.polyfilled.js"></script>
+    <script>
+        const video = document.getElementById('livePlayer');
+        if (Hls.isSupported()) {
+            const hls = new Hls();
+            hls.loadSource("https://cdn.igocast.com/wkrp_channel1_hls/wkrp_channel1_master.m3u8");
+            hls.attachMedia(video);
+            hls.on(Hls.Events.MANIFEST_PARSED, function() {
+                video.play();
+            });
+        }
+        const livePlayer = new Plyr(video, {
+            controls: ['play', 'progress', 'volume', 'fullscreen'],
+            autoplay: true
+        });
+    </script>
+
+</body>
+</html>
