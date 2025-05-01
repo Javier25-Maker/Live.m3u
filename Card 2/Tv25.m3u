@@ -328,7 +328,7 @@ https://cdn.cvattv.com.ar/live/c6eds/Canal_de_las_estrellas/SA_Live_dash_enc/Can
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=53d752e4649dadd808d913985f86ee77:d1fd24db1b61d634cabfc44538ce9b0e
 https://cdn.cvattv.com.ar/live/c7eds//Telemundo_HD/SA_Live_dash_enc/Telemundo_HD.mpd
-#EXTINF:-1 tvg-logo="https://i.postimg.cc/cCh7hNmv/COMEDY-CENTRAL.jpg", CENTRAL DE LA COMEDÍA
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/cCh7hNmv/COMEDY-CENTRAL.jpg", COMEDY CENTRAL
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=4013f784c5ef4318ad47024e61eb094e:bad433a547f97c7f65cda5e83b8dd416
 https://cdn.cvattv.com.ar/live/c7eds/ComedyCentral/SA_Live_dash_enc/ComedyCentral.mpd
@@ -344,19 +344,19 @@ http://cdn.sensa.com.ar/live/eds/DePelicula/live_dash_cld/DePelicula.mpd
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=812f89cb0024d3699e832d72e4f0ebb6:851d7496cd1a7e03125b2b6d3b41c922
 http://cdn.sensa.com.ar/live/sta01/CinePremium/live_dash_cld/CinePremium.mpd
-#EXTINF:-1 tvg-logo="https://i.postimg.cc/vHm5ykhv/UNIVERSAL-CINEMA.jpg", INEMA UNIVERSAL
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/vHm5ykhv/UNIVERSAL-CINEMA.jpg", UNIVERSAL CINEMA
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=f6ae2e17173055e4ca69dc18963406ae:5a955c29eb88a0b4c9a2538cc4b3aea2
 https://cdn.cvattv.com.ar/live/c6eds/Universal_Cinema/SA_Live_dash_cenc/Universal_Cinema.mpd
-#EXTINF:-1 tvg-logo="https://i.postimg.cc/x1JHJmWJ/UNIVERSAL-COMEDY.jpg", COMMEDIA UNIVERSAL
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/x1JHJmWJ/UNIVERSAL-COMEDY.jpg", UNIVERSAL COMEDY
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=062c5d25105a3a935b67e36923c73f28:88c2d4cec420f18d2477152c66c7870d
 https://cdn.cvattv.com.ar/live/c6eds/Universal_Comedy/SA_Live_dash_enc/Universal_Comedy.mpd
-#EXTINF:-1 tvg-logo="https://i.postimg.cc/4dHfB9qK/UNIVERSAL-CRIME.jpg", CRIME UNIVERSAL
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/4dHfB9qK/UNIVERSAL-CRIME.jpg", UNIVERSAL CRIME
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=1efd7edf60e1514f775dd13d046ae708:c2ef1abbd945c62c11b1375eaaa50f0d
 https://cdn.cvattv.com.ar/live/c6eds/universal_Crime/SA_Live_dash_enc/universal_Crime.mpd
-#EXTINF:-1 tvg-logo="https://i.postimg.cc/5NkL2gkW/UNIVERSAL-PREMIERE.jpg",PREMIERE UNIVERSAL
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/5NkL2gkW/UNIVERSAL-PREMIERE.jpg",UNIVERSAL PREMIERE
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=0eb20b51ad13b58ad417f11318e588b3:ad5d29a33d73d21187157802de8e6097
 https://cdn.cvattv.com.ar/live/c6eds/Universal_Premiere/SA_Live_dash_enc/Universal_Premiere.mpd
