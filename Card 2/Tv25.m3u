@@ -646,14 +646,17 @@ https://cdn.cvattv.com.ar/live/c6eds/CNN_en_Espanol/SA_Live_dash_enc/CNN_en_Espa
 #KODIPROP:inputstream.adaptive.license_key=e21fc12c6ee185fbc90a052b05026be9:0f96fd52903707aac0b42853a043ffd0
 https://cdn.cvattv.com.ar/live/c6eds/DW/SA_Live_dash_enc/DW.mpd
 
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/wTK6MR8M/BAND.jpg" ,BAND
+http://185.236.183.117:14033/Bandfhd
+
 #EXTINF:-1 tvg-logo="https://i.postimg.cc/1zdL4W5L/GLOBO.jpg" ,GLOBO SP
-http://hls1.sua.tv:80/live/globotvbahiafhdbr2/s.m3u8
+http://79.127.238.228:14217/GloboHD
 
 #EXTINF:-1 tvg-logo="https://i.postimg.cc/Df4v7dNR/SBT.jpg" ,SBT
-https://alanza.iptv2022.com/sh/sbt/tracks-v1a1/mono.m3u8
+http://185.236.183.117:14597/SBTfhd
 
 #EXTINF:-1 tvg-logo="https://i.postimg.cc/PrmdwfT4/RECORD.jpg" ,RECORD
-https://alanza.iptv2022.com/sh/RecordTV/tracks-v1a1/mono.m3u8
+http://185.236.183.117:14567/Recordhd
 
 #EXTINF:-1 tvg-logo="https://i.postimg.cc/cHWgjZyM/SEXTREME.jpg" ,SEXTREME
 #KODIPROP:inputstream.adaptive.license_type=clearkey
