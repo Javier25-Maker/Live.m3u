@@ -668,7 +668,7 @@ http://79.127.238.228:14217/GloboHD
 http://185.236.183.117:14597/SBTfhd
 
 #EXTINF:-1 tvg-logo="https://i.postimg.cc/PrmdwfT4/RECORD.jpg" ,RECORD
-http://185.236.183.117:14567/Recordhd
+http://185.246.208.74:14660/PlayPlus
 
 #EXTINF:-1 tvg-logo="https://i.postimg.cc/cHWgjZyM/SEXTREME.jpg" ,SEXTREME
 #KODIPROP:inputstream.adaptive.license_type=clearkey
